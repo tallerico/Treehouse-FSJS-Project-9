@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import Header from './Header'
 import Gallery from './Gallery'
 import './App.css'
@@ -11,9 +11,12 @@ class App extends Component {
 			pictures: [],
 		}
 	}
+
 	componentWillMount() {
+		const apiKey = process.env.REACT_APP_FLIKR_API_KEY
+
 		fetch(
-			'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=c20a087bd2c43d4d67a25f51b52843eb&tags=gaming&per_page=24&format=json&nojsoncallback=1',
+			`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=gaming&per_page=24&format=json&nojsoncallback=1`,
 		)
 			.then(results => {
 				return results.json()
@@ -34,7 +37,12 @@ class App extends Component {
 	}
 
 	render() {
-		return <Header />
+		return (
+			<Fragment>
+				<Header />
+				<Gallery photos={this.state.pictures} />
+			</Fragment>
+		)
 	}
 }
 
