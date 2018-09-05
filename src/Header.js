@@ -6,6 +6,11 @@ const Header = props => {
 		<div className="header_container">
 			<div className="black_bar" />
 			<Search />
+			<div className="nav_container">
+				<button className="btn">Gaming</button>
+				<button className="btn">Racing</button>
+				<button className="btn">Funkos</button>
+			</div>
 		</div>
 	)
 }
