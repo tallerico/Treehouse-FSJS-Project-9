@@ -81,7 +81,7 @@ class App extends Component {
 		return (
 			<Fragment>
 				<Header />
-				<Gallery photos={this.state.pictures} />
+				<Route path="/gaming" render={() => <Gallery pictures={this.state.gamingPictures} />} />
 			</Fragment>
 		)
 	}

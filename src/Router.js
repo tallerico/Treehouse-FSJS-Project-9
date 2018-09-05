@@ -4,11 +4,7 @@ import App from './App'
 
 const Router = () => (
 	<BrowserRouter>
-		<Switch>
-			<Route exact path="/" component={App} />
-			<Route path="/store/:storeId" component={App} />
-			<Route component={NotFound} />
-		</Switch>
+		<App />
 	</BrowserRouter>
 )
 

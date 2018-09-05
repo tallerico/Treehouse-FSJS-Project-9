@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Search from './Search'
 
 const Header = props => {
@@ -7,9 +8,15 @@ const Header = props => {
 			<div className="black_bar" />
 			<Search />
 			<div className="nav_container">
-				<button className="btn">Gaming</button>
-				<button className="btn">Racing</button>
-				<button className="btn">Funkos</button>
+				<Link to="/gaming">
+					<button className="btn">Gaming</button>
+				</Link>
+				<Link to="/racing">
+					<button className="btn">Racing</button>
+				</Link>
+				<Link to="/funkos">
+					<button className="btn">Funkos</button>
+				</Link>
 			</div>
 		</div>
 	)
