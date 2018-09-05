@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { BrowserRouter, Route, Link } from 'react-router-dom'
 import Header from './Header'
 import Gallery from './Gallery'
 import './App.css'
@@ -8,7 +9,10 @@ class App extends Component {
 	constructor() {
 		super()
 		this.state = {
-			pictures: [],
+			gamingPictures: [],
+			racingPictures: [],
+			funkoPictures: [],
+			searchPictures: [],
 		}
 	}
 
@@ -26,13 +30,50 @@ class App extends Component {
 				let pictures = data.photos.photo.map(pic => {
 					const picture = {}
 					picture[pic.key] = pic.value
-					picture.title = pic.title
 					picture.picUrl = `https://farm${pic.farm}.staticflickr.com/${pic.server}/${pic.id}_${
 						pic.secret
 					}_q.jpg`
 					return picture
 				})
-				this.setState({ pictures })
+				this.setState({ gamingPictures: pictures })
+			})
+
+		fetch(
+			`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=racing&per_page=24&format=json&nojsoncallback=1`,
+		)
+			.then(results => {
+				return results.json()
+			})
+			.then(data => {
+				console.log(data)
+				let pictures = data.photos.photo.map(pic => {
+					const picture = {}
+					picture[pic.key] = pic.value
+					picture.picUrl = `https://farm${pic.farm}.staticflickr.com/${pic.server}/${pic.id}_${
+						pic.secret
+					}_q.jpg`
+					return picture
+				})
+				this.setState({ racingPictures: pictures })
+			})
+
+		fetch(
+			`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=funko&per_page=24&format=json&nojsoncallback=1`,
+		)
+			.then(results => {
+				return results.json()
+			})
+			.then(data => {
+				console.log(data)
+				let pictures = data.photos.photo.map(pic => {
+					const picture = {}
+					picture[pic.key] = pic.value
+					picture.picUrl = `https://farm${pic.farm}.staticflickr.com/${pic.server}/${pic.id}_${
+						pic.secret
+					}_q.jpg`
+					return picture
+				})
+				this.setState({ funkoPictures: pictures })
 			})
 	}
 
