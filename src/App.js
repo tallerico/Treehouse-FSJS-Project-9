@@ -70,6 +70,8 @@ class App extends Component {
 			<Fragment>
 				<Header />
 				<Route path="/gaming" render={() => <Gallery pictures={this.state.gamingPictures} />} />
+				<Route path="/racing" render={() => <Gallery pictures={this.state.racingPictures} />} />
+				<Route path="/funkos" render={() => <Gallery pictures={this.state.funkoPictures} />} />
 			</Fragment>
 		)
 	}
