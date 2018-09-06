@@ -6,7 +6,7 @@ const Header = props => {
 	return (
 		<div className="header_container">
 			<div className="black_bar" />
-			<Search />
+			<Search search={props.search} />
 			<div className="nav_container">
 				<Link to="/gaming">
 					<button className="btn">Gaming</button>

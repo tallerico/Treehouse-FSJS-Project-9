@@ -1,3 +1,12 @@
+This project was created for Team Treehouse Full Stack Javascript Tech Degree unit 9.
+
+Please create a .env file in your root folder and add in your keys following the example below:
+
+    REACT_APP_FLIKR_API_KEY = .....key......
+    REACT_APP_FLIKR_SECRET_KEY = .....key......
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

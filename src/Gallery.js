@@ -6,8 +6,8 @@ const Gallery = props => {
 
 	return (
 		<div className="gallery_container">
-			{pics.map(url => (
-				<GalleryItem key={url} image={url} />
+			{pics.map((url, index) => (
+				<GalleryItem key={index.toString()} image={url} />
 			))}
 		</div>
 	)
