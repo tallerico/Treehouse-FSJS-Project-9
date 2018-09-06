@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Header from './Header'
 import Gallery from './Gallery'
 import './App.css'
@@ -26,14 +26,10 @@ class App extends Component {
 				return results.json()
 			})
 			.then(data => {
-				console.log(data)
 				let pictures = data.photos.photo.map(pic => {
-					const picture = {}
-					picture[pic.key] = pic.value
-					picture.picUrl = `https://farm${pic.farm}.staticflickr.com/${pic.server}/${pic.id}_${
+					return `https://farm${pic.farm}.staticflickr.com/${pic.server}/${pic.id}_${
 						pic.secret
 					}_q.jpg`
-					return picture
 				})
 				this.setState({ gamingPictures: pictures })
 			})
@@ -45,14 +41,10 @@ class App extends Component {
 				return results.json()
 			})
 			.then(data => {
-				console.log(data)
 				let pictures = data.photos.photo.map(pic => {
-					const picture = {}
-					picture[pic.key] = pic.value
-					picture.picUrl = `https://farm${pic.farm}.staticflickr.com/${pic.server}/${pic.id}_${
+					return `https://farm${pic.farm}.staticflickr.com/${pic.server}/${pic.id}_${
 						pic.secret
 					}_q.jpg`
-					return picture
 				})
 				this.setState({ racingPictures: pictures })
 			})
@@ -64,14 +56,10 @@ class App extends Component {
 				return results.json()
 			})
 			.then(data => {
-				console.log(data)
 				let pictures = data.photos.photo.map(pic => {
-					const picture = {}
-					picture[pic.key] = pic.value
-					picture.picUrl = `https://farm${pic.farm}.staticflickr.com/${pic.server}/${pic.id}_${
+					return `https://farm${pic.farm}.staticflickr.com/${pic.server}/${pic.id}_${
 						pic.secret
 					}_q.jpg`
-					return picture
 				})
 				this.setState({ funkoPictures: pictures })
 			})
