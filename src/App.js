@@ -15,7 +15,8 @@ class App extends Component {
 			racingPictures: [],
 			funkoPictures: [],
 			searchPictures: [],
-			fetchInProgress: true,
+			fetchInProgress: false,
+			validSearch: true,
 		}
 	}
 
@@ -75,6 +76,7 @@ class App extends Component {
 			`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${search}&per_page=24&format=json&nojsoncallback=1`,
 		)
 			.then(results => {
+				this.setState({ fetchInProgress: true })
 				return results.json()
 			})
 			.then(data => {
@@ -85,6 +87,9 @@ class App extends Component {
 				})
 				this.setState({ searchPictures: pictures })
 				this.setState({ fetchInProgress: false })
+				if (pictures.length === 0) {
+					this.setState({ validSearch: false })
+				}
 			})
 	}
 
@@ -100,7 +105,12 @@ class App extends Component {
 						path="/search"
 						render={() => {
 							if (!this.state.fetchInProgress) {
-								return <Gallery pictures={this.state.searchPictures} />
+								return (
+									<Gallery
+										pictures={this.state.searchPictures}
+										validSearch={this.state.validSearch}
+									/>
+								)
 							} else {
 								return (
 									<div className="loader">
