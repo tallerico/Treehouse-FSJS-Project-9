@@ -85,6 +85,7 @@ class App extends Component {
 						pic.secret
 					}_q.jpg`
 				})
+
 				this.setState({ searchPictures: pictures })
 				this.setState({ fetchInProgress: false })
 				if (pictures.length === 0) {
