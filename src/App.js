@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import Header from './Header'
 import Gallery from './Gallery'
 import NotFound from './NotFound'
+import Loader from 'react-loader-spinner'
 import './normalize.css'
 import './App.css'
 
@@ -14,6 +15,7 @@ class App extends Component {
 			racingPictures: [],
 			funkoPictures: [],
 			searchPictures: [],
+			fetchInProgress: true,
 		}
 	}
 
@@ -82,7 +84,7 @@ class App extends Component {
 					}_q.jpg`
 				})
 				this.setState({ searchPictures: pictures })
-				console.log(pictures)
+				this.setState({ fetchInProgress: false })
 			})
 	}
 
@@ -94,7 +96,21 @@ class App extends Component {
 					<Route path="/gaming" render={() => <Gallery pictures={this.state.gamingPictures} />} />
 					<Route path="/racing" render={() => <Gallery pictures={this.state.racingPictures} />} />
 					<Route path="/funkos" render={() => <Gallery pictures={this.state.funkoPictures} />} />
-					<Route path="/search" render={() => <Gallery pictures={this.state.searchPictures} />} />
+					<Route
+						path="/search"
+						render={() => {
+							if (!this.state.fetchInProgress) {
+								return <Gallery pictures={this.state.searchPictures} />
+							} else {
+								return (
+									<div className="loader">
+										<Loader type="Rings" color="#009688" height="100" width="100" />
+									</div>
+								)
+							}
+						}}
+					/>
+
 					<Redirect exact path="/" to="/gaming" />
 					<Route component={NotFound} />
 				</Switch>
