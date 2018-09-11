@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom'
 import Header from './Header'
 import Gallery from './Gallery'
-import './App.css'
 import './normalize.css'
+import './App.css'
 
 class App extends Component {
 	constructor() {
@@ -16,7 +16,7 @@ class App extends Component {
 		}
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		const apiKey = process.env.REACT_APP_FLIKR_API_KEY
 
 		fetch(
@@ -87,13 +87,18 @@ class App extends Component {
 
 	render() {
 		return (
-			<Fragment>
-				<Header search={this.imageSearch} />
-				<Route path="/gaming" render={() => <Gallery pictures={this.state.gamingPictures} />} />
-				<Route path="/racing" render={() => <Gallery pictures={this.state.racingPictures} />} />
-				<Route path="/funkos" render={() => <Gallery pictures={this.state.funkoPictures} />} />
-				<Route path="/search" render={() => <Gallery pictures={this.state.searchPictures} />} />
-			</Fragment>
+			<BrowserRouter>
+				<Switch>
+					<Fragment>
+						<Header search={this.imageSearch} />
+						<Route path="/gaming" render={() => <Gallery pictures={this.state.gamingPictures} />} />
+						<Route path="/racing" render={() => <Gallery pictures={this.state.racingPictures} />} />
+						<Route path="/funkos" render={() => <Gallery pictures={this.state.funkoPictures} />} />
+						<Route path="/search" render={() => <Gallery pictures={this.state.searchPictures} />} />
+						<Redirect path="/" to="/gaming" />
+					</Fragment>
+				</Switch>
+			</BrowserRouter>
 		)
 	}
 }

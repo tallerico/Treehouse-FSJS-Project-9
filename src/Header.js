@@ -1,22 +1,18 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Search from './Search'
+import LinkButton from './LinkButton'
 
 const Header = props => {
 	return (
 		<div className="header_container">
 			<div className="black_bar" />
-			<Search search={props.search} />
+			<Route path="/search" render={() => <Search search={props.search} />} />
 			<div className="nav_container">
-				<Link to="/gaming">
-					<button className="btn">Gaming</button>
-				</Link>
-				<Link to="/racing">
-					<button className="btn">Racing</button>
-				</Link>
-				<Link to="/funkos">
-					<button className="btn">Funkos</button>
-				</Link>
+				<LinkButton to="/gaming">Gaming</LinkButton>
+				<LinkButton to="/racing">Racing</LinkButton>
+				<LinkButton to="/funkos">Funkos</LinkButton>
+				<LinkButton to="/search">Search</LinkButton>
 			</div>
 		</div>
 	)
