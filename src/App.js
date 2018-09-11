@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react'
-import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import Header from './Header'
 import Gallery from './Gallery'
+import NotFound from './NotFound'
 import './normalize.css'
 import './App.css'
 
@@ -87,17 +88,17 @@ class App extends Component {
 
 	render() {
 		return (
-			<BrowserRouter>
+			<Fragment>
+				<Header search={this.imageSearch} />
 				<Switch>
-					<Fragment>
-						<Header search={this.imageSearch} />
-						<Route path="/gaming" render={() => <Gallery pictures={this.state.gamingPictures} />} />
-						<Route path="/racing" render={() => <Gallery pictures={this.state.racingPictures} />} />
-						<Route path="/funkos" render={() => <Gallery pictures={this.state.funkoPictures} />} />
-						<Route path="/search" render={() => <Gallery pictures={this.state.searchPictures} />} />
-					</Fragment>
+					<Route path="/gaming" render={() => <Gallery pictures={this.state.gamingPictures} />} />
+					<Route path="/racing" render={() => <Gallery pictures={this.state.racingPictures} />} />
+					<Route path="/funkos" render={() => <Gallery pictures={this.state.funkoPictures} />} />
+					<Route path="/search" render={() => <Gallery pictures={this.state.searchPictures} />} />
+					<Redirect exact path="/" to="/gaming" />
+					<Route component={NotFound} />
 				</Switch>
-			</BrowserRouter>
+			</Fragment>
 		)
 	}
 }

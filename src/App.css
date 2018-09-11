@@ -26,8 +26,9 @@ input {
 	background-color: #009688;
 }
 
-.header_container a {
-	width: 100px;
+h1 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
 }
 
 button {
@@ -40,10 +41,27 @@ button {
 	padding: 0.8em;
 	transition-duration: 1s;
 	margin-bottom: 10px;
+	width: 90%;
 }
 
 button:hover {
 	transform: scale(1.1, 1.1);
+}
+
+.not_found_container {
+	display: flex;
+	padding: 2em;
+	height: 100vh;
+}
+
+.color_block {
+	padding: 1em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: #52c7b8;
+	border-radius: 10px;
 }
 
 .search_container {
@@ -108,7 +126,7 @@ button:hover {
 .nav_container {
 	display: flex;
 	flex-direction: column;
-	align-items: space-around;
+	align-items: center;
 	width: 100%;
 }
 
