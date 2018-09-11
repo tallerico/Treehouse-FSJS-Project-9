@@ -95,7 +95,6 @@ class App extends Component {
 						<Route path="/racing" render={() => <Gallery pictures={this.state.racingPictures} />} />
 						<Route path="/funkos" render={() => <Gallery pictures={this.state.funkoPictures} />} />
 						<Route path="/search" render={() => <Gallery pictures={this.state.searchPictures} />} />
-						<Redirect path="/" to="/gaming" />
 					</Fragment>
 				</Switch>
 			</BrowserRouter>
