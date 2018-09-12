@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import LinkButton from './LinkButton'
 
 // creating a search component to search through images

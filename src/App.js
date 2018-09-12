@@ -72,12 +72,13 @@ class App extends Component {
 	//search function that takes the value of the form field and fetches date from the api
 	imageSearch = search => {
 		const apiKey = process.env.REACT_APP_FLIKR_API_KEY
+		this.setState({ fetchInProgress: true })
+		this.setState({ validSearch: true })
 		//fetching data
 		fetch(
 			`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${search}&per_page=24&format=json&nojsoncallback=1`,
 		)
 			.then(results => {
-				this.setState({ fetchInProgress: true })
 				return results.json()
 			})
 			.then(data => {

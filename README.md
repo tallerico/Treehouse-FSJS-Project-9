@@ -5,6 +5,7 @@ Please create a .env file in your root folder and add in your keys following the
     REACT_APP_FLIKR_API_KEY = .....key......
     REACT_APP_FLIKR_SECRET_KEY = .....key......
 
+NOTE: no quotes or semicolon needed around and after key.
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
