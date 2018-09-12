@@ -22,7 +22,7 @@ class App extends Component {
 
 	componentDidMount() {
 		const apiKey = process.env.REACT_APP_FLIKR_API_KEY
-
+		//fetching data for pictures and setting state with data
 		fetch(
 			`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=gaming&per_page=24&format=json&nojsoncallback=1`,
 		)
@@ -69,9 +69,10 @@ class App extends Component {
 			})
 	}
 
+	//search function that takes the value of the form field and fetches date from the api
 	imageSearch = search => {
 		const apiKey = process.env.REACT_APP_FLIKR_API_KEY
-
+		//fetching data
 		fetch(
 			`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${search}&per_page=24&format=json&nojsoncallback=1`,
 		)
@@ -80,6 +81,7 @@ class App extends Component {
 				return results.json()
 			})
 			.then(data => {
+				// maps over data and creates and array of image addresses
 				let pictures = data.photos.photo.map(pic => {
 					return `https://farm${pic.farm}.staticflickr.com/${pic.server}/${pic.id}_${
 						pic.secret
@@ -88,6 +90,7 @@ class App extends Component {
 
 				this.setState({ searchPictures: pictures })
 				this.setState({ fetchInProgress: false })
+				//checking if search returns 0 results. Using this state to display no results component
 				if (pictures.length === 0) {
 					this.setState({ validSearch: false })
 				}
@@ -105,6 +108,7 @@ class App extends Component {
 					<Route
 						path="/search"
 						render={() => {
+							//rendering gallery when fetch is complete
 							if (!this.state.fetchInProgress) {
 								return (
 									<Gallery
@@ -114,6 +118,7 @@ class App extends Component {
 								)
 							} else {
 								return (
+									//loader rings when searching
 									<div className="loader">
 										<Loader type="Rings" color="#009688" height="100" width="100" />
 									</div>

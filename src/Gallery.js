@@ -3,7 +3,9 @@ import GalleryItem from './GalleryItem'
 
 const Gallery = props => {
 	const pics = props.pictures
-
+	{
+		/*if no search results displaying a message*/
+	}
 	if (props.validSearch === false) {
 		return (
 			<div className="not_found_container">
@@ -13,6 +15,9 @@ const Gallery = props => {
 			</div>
 		)
 	} else {
+		{
+			/*Rendering images*/
+		}
 		return (
 			<div className="gallery_container">
 				{pics.map((url, index) => (

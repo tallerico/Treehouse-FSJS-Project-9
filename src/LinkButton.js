@@ -2,6 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router'
 
+/* 
+I got this code snipet from another source but I understand what it is doing.
+I wanted to be able to have button elements instead of just buttons wrapped in <a></a> tags
+which is what <NavLink></NavLink> and <Link> create.
+*/
 const LinkButton = props => {
 	const {
 		history,
